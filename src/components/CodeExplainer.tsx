@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Input, Output } from "lucide-react";
+import { Code, Terminal } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 const CodeExplainer = () => {
@@ -59,7 +59,7 @@ const CodeExplainer = () => {
           {/* Input Section */}
           <Card className="p-4 bg-gray-800/50 border-gray-700">
             <div className="flex items-center gap-2 mb-2">
-              <Input className="h-5 w-5 text-blue-400" />
+              <Code className="h-5 w-5 text-blue-400" />
               <h2 className="text-xl font-semibold text-white">Input Code</h2>
             </div>
             <Textarea
@@ -80,7 +80,7 @@ const CodeExplainer = () => {
           {/* Output Section */}
           <Card className="p-4 bg-gray-800/50 border-gray-700">
             <div className="flex items-center gap-2 mb-2">
-              <Output className="h-5 w-5 text-green-400" />
+              <Terminal className="h-5 w-5 text-green-400" />
               <h2 className="text-xl font-semibold text-white">Explanation</h2>
             </div>
             <ScrollArea className="h-[300px] rounded-md border border-gray-700 bg-gray-900/50 p-4">
