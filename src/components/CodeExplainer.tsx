@@ -59,22 +59,23 @@ const CodeExplainer = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center space-y-2 animate-fade-in">
-          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 animate-fade-in hover:scale-105 transition-transform duration-300">
             Program Generator & Explainer
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg animate-fade-in opacity-0 animation-delay-200">
             Describe your programming problem, and I'll generate the solution with a detailed explanation
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 animate-fade-in opacity-0 animation-delay-300">
           {/* Input Section */}
           <Card className={cn(
-            "p-6 bg-gray-800/50 border-gray-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20",
-            "transform hover:-translate-y-1"
+            "p-6 bg-gray-800/50 border-gray-700 transition-all duration-300",
+            "hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1",
+            "transform perspective-1000 hover:rotate-1"
           )}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-blue-500/20">
+              <div className="p-2 rounded-lg bg-blue-500/20 animate-pulse">
                 <Code className="h-5 w-5 text-blue-400" />
               </div>
               <h2 className="text-xl font-semibold text-white">Problem Description</h2>
@@ -83,21 +84,21 @@ const CodeExplainer = () => {
               value={problemDescription}
               onChange={(e) => setProblemDescription(e.target.value)}
               placeholder="Enter your programming problem (e.g., 'Write a program for Fibonacci series')"
-              className="min-h-[300px] bg-gray-900/50 border-gray-700 text-white font-mono text-base resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="min-h-[300px] bg-gray-900/50 border-gray-700 text-white font-mono text-base resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
             />
             <Button 
               onClick={handleSubmit} 
               disabled={isLoading}
-              className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg py-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg py-6 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 group"
             >
               {isLoading ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  Generating Solution...
+                  <span className="animate-pulse">Generating Solution...</span>
                 </>
               ) : (
                 <>
-                  <Sparkles className="h-5 w-5" />
+                  <Sparkles className="h-5 w-5 group-hover:rotate-12 transition-transform" />
                   Generate Solution
                 </>
               )}
@@ -106,20 +107,25 @@ const CodeExplainer = () => {
 
           {/* Output Section */}
           <Card className={cn(
-            "p-6 bg-gray-800/50 border-gray-700 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20",
-            "transform hover:-translate-y-1"
+            "p-6 bg-gray-800/50 border-gray-700 transition-all duration-300",
+            "hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1",
+            "transform perspective-1000 hover:rotate-1"
           )}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-green-500/20">
+              <div className="p-2 rounded-lg bg-green-500/20 animate-pulse">
                 <Terminal className="h-5 w-5 text-green-400" />
               </div>
               <h2 className="text-xl font-semibold text-white">Solution & Explanation</h2>
             </div>
-            <ScrollArea className="h-[300px] rounded-lg border border-gray-700 bg-gray-900/50 p-6">
+            <ScrollArea className="h-[300px] rounded-lg border border-gray-700 bg-gray-900/50 p-6 transition-all duration-300">
               <div className="text-white whitespace-pre-wrap font-mono">
-                {explanation || (
-                  <div className="text-gray-400 text-center space-y-4 py-12">
-                    <Terminal className="h-12 w-12 mx-auto opacity-50" />
+                {explanation ? (
+                  <div className="animate-fade-in">
+                    {explanation}
+                  </div>
+                ) : (
+                  <div className="text-gray-400 text-center space-y-4 py-12 animate-pulse">
+                    <Terminal className="h-12 w-12 mx-auto opacity-50 animate-bounce" />
                     <p>Your solution and explanation will appear here...</p>
                   </div>
                 )}
