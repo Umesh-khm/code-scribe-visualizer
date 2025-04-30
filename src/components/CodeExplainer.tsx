@@ -26,7 +26,7 @@ const CodeExplainer = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://code-generator-x3de.onrender.com/generate', {
+      const response = await fetch('https://code-generator-x3de.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
