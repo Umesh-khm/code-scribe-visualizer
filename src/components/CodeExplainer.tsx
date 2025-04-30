@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,7 +31,7 @@ const CodeExplainer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ problem: problemDescription }),
+        body: JSON.stringify({ prompt: problemDescription }),
       });
 
       if (!response.ok) throw new Error('Failed to get solution');
