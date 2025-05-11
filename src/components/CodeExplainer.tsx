@@ -26,7 +26,7 @@ const CodeExplainer = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://code-generator-x3de.onrender.com', {
+      const response = await fetch('https://e687-13-71-3-98.ngrok-free.app/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
